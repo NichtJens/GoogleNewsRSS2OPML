@@ -29,5 +29,5 @@ optional arguments:
                         list of search queries (default: None)
 ```
 
-*So far this has been tested with [Flym](https://f-droid.org/packages/net.frju.flym) and [Feeder](https://f-droid.org/packages/com.nononsenseapps.feeder). Both are open source and avaiable in [f-droid](https://f-droid.org).
+*So far this has been tested with [Flym](https://f-droid.org/packages/net.frju.flym) and [Feeder](https://f-droid.org/packages/com.nononsenseapps.feeder). Both are open source and available in [f-droid](https://f-droid.org).
 
