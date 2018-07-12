@@ -42,7 +42,7 @@ import argparse
 
 parser = argparse.ArgumentParser()
 
-parser.add_argument("-o", "--output", help="output file name")
+parser.add_argument("-o", "--output", help="output file name (default: print to stdout)")
 
 parser.add_argument("-c", "--country",   default="us", help="country / Google News edition (default: us)")
 parser.add_argument("-l", "--language",  default="en", help="language (default: en)")

@@ -14,7 +14,7 @@ usage: gnrss2opml.py [-h] [-o OUTPUT] [-c COUNTRY] [-l LANGUAGE]
 optional arguments:
   -h, --help            show this help message and exit
   -o OUTPUT, --output OUTPUT
-                        output file name
+                        output file name (default: print to stdout)
   -c COUNTRY, --country COUNTRY
                         country / Google News edition (default: us)
   -l LANGUAGE, --language LANGUAGE
