@@ -7,7 +7,7 @@ There could be an easy fix, since the _News & Weather_ interface was basically t
 This script tries to provide a workaround by generating an [OPML](https://en.wikipedia.org/wiki/OPML) file that should be importable by any* RSS reader with the current URLs (found by trial and error). It allows to customize topics, locations, and search queries as well as edition/country and language settings via a straight-forward commandline interface:
 
 ```
-usage: gnrss2opml.py [-h] [-o OUTPUT] [-c COUNTRY] [-l LANGUAGE]
+usage: gnrss2opml.py [-h] [-o OUTPUT] [-c COUNTRY] [-l LANGUAGE] [-s]
                      [-t [TOPIC [TOPIC ...]]] [-g [LOCATION [LOCATION ...]]]
                      [-q [QUERY [QUERY ...]]]
 
@@ -19,6 +19,7 @@ optional arguments:
                         country / Google News edition (default: us)
   -l LANGUAGE, --language LANGUAGE
                         language (default: en)
+  -s, --stories         include Top Stories
   -t [TOPIC [TOPIC ...]], --topics [TOPIC [TOPIC ...]]
                         list of topics, will be converted to uppercase
                         (default: WORLD NATION BUSINESS TECHNOLOGY
