@@ -21,6 +21,7 @@ OPML_FOOTER = """\
 </opml>
 """
 
+URL_STORIES  = "https://news.google.com/news/rss"
 URL_TOPIC    = "https://news.google.com/news/rss/headlines/section/topic/{topic}"
 URL_LOCATION = "https://news.google.com/news/rss/headlines/section/geo/{location}"
 URL_QUERY    = "https://news.google.com/news/rss/search/section/q/{query}"
@@ -46,6 +47,8 @@ parser.add_argument("-o", "--output", help="output file name (default: print to 
 
 parser.add_argument("-c", "--country",   default="us", help="country / Google News edition (default: us)")
 parser.add_argument("-l", "--language",  default="en", help="language (default: en)")
+
+parser.add_argument("-s", "--stories", action='store_true', help="include Top Stories")
 
 parser.add_argument("-t", "--topics",    metavar="TOPIC",    nargs="*", default=DEFAULT_TOPICS, help="list of topics, will be converted to uppercase (default: {})".format(" ".join(DEFAULT_TOPICS)))
 parser.add_argument("-g", "--locations", metavar="LOCATION", nargs="*", default=[],             help="list of geographic locations (default: None)")
@@ -101,6 +104,11 @@ def language_settings(ned=None, gl=None, hl=None):
     if hl is not None:
         res.append("hl=" + hl)
     return "?" + "&".join(res) if res else ""
+
+def gen_stories_urls(stories):
+    """Yields a single url for the Top Stories"""
+    if stories:
+        yield URL_STORIES
 
 def gen_topic_urls(topics, locale):
     """
@@ -160,11 +168,12 @@ if __name__ == "__main__":
     lang_top = topic_locale(clargs.language, clargs.country)
     lang_set = language_settings(clargs.country)
 
+    urls_stories  = gen_stories_urls(clargs.stories)
     urls_topic    = gen_topic_urls(clargs.topics, lang_top)
     urls_location = gen_location_urls(clargs.locations)
     urls_query    = gen_query_urls(clargs.queries)
 
-    urls = chain_as_list(urls_topic, urls_location, urls_query)
+    urls = chain_as_list(urls_stories, urls_topic, urls_location, urls_query)
     if not urls:
         raise SystemExit("No results found for given options.")
 
